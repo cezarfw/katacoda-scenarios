@@ -1,7 +1,7 @@
-We have a two node Kubernetes cluster deployed and ready. It consists of a
-single control plane node and a single worker node.
+Temos um cluster Kubernetes de dois nós implantado e pronto. Consiste em um
+nó de plano de controle único e um único nó de trabalhador.
 
-Examine the Kubernetes nodes running in the cluster before starting the troubleshooting.
+Examine os nós Kubernetes em execução no cluster antes de iniciar a solução de problemas.
 
 `kubectl get nodes`{{execute}}
 

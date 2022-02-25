@@ -1,71 +1,65 @@
-You are a Cloud Engineer responsible for all aspects of Kubernetes at your
-company. Developers have adopted the Kubernetes platform for all of their new
-applications and have built pipelines to automate the deployment of their code.
+Você é um engenheiro de nuvem responsável por todos os aspectos do Kubernetes no seu
+companhia. Os desenvolvedores adotaram a plataforma Kubernetes para todas as suas novas
+aplicativos e criaram pipelines para automatizar a implantação de seu código.
 
-During a daily scrum you're told that the new development cluster recently
-released to this group is not working correctly. You apologize for the
-inconvenience and commit to solving this issue immediately so that the build
-processes can return to a normal state.
+Durante um scrum diário, você é informado de que o novo cluster de desenvolvimento foi recentemente liberado para este grupo não está funcionando corretamente. Você pede desculpas pelo inconveniente e comprometa-se a resolver esse problema imediatamente, para que a compilação processos podem retornar ao estado normal.
 
-You start by checking to see if the Kubernetes nodes are healthy.
+Você começa verificando se os nós do Kubernetes são saudáveis.
 `kubectl get nodes --request-timeout 5s`{{execute}}
 
-After some time you receive an error message. Either a timeout or a connection refused.
+Após algum tempo, você recebe uma mensagem de erro. Um tempo limite ou uma conexão recusada.
 
-Your first instinct, to check the nodes, has identified a new clue. You can't
-access the nodes. After a second, you realize that this means that the
-Kubernetes API is not responding to your commands so this is a larger issue than
-a single node not being healthy. You change focus to start identifying new clues
-related to the API server.
+Seu primeiro instinto, para verificar os nós, identificou uma nova pista. Você não pode
+acesse os nós. Depois de um segundo, você percebe que isso significa que o
+A API do Kubernetes não está respondendo aos seus comandos, portanto, esse é um problema maior do que um único nó não sendo saudável. Você muda de foco para começar a identificar novas pistas relacionado ao servidor API.
 
-Since the Kubernetes API is unavailable, kubectl commands won't work. You must
-rely on some commands from the container runtime instead, in this case it's
-Docker. Take a look at the containers on the cluster by running some docker commands.
+Como a API do Kubernetes não está disponível, os comandos do kubectl não funcionarão. Você deve confie em alguns comandos do tempo de execução do contêiner, neste caso é
+Docker. Dê uma olhada nos contêineres no cluster executando alguns comandos do docker.
 
 `docker ps -a`{{execute}}
 
-You notice that some of your containers are exiting which is another clue. Which
-one is the problem though? You start with the brains of the Kubernetes
-machine. Check the docker logs for the API server container.
+Você percebe que alguns de seus contêineres estão saindo, o que é outra pista. Qual
+um é o problema embora? Você começa com o cérebro dos Kubernetes
+máquina. Verifique os logs do docker para o contêiner do servidor API.
 
-Identify the container ID of the Kube-API server by copying it from the 
-`docker ps -a`{{execute}} command from above.
+Identifique o ID do contêiner do servidor Kube-API copiando-o do
+`docker ps -a`{{execute}} comando de cima.
 
-Then run 
+Então execute
 
 `docker logs CONTAINERID_GOES_HERE`
 
-We see a bunch of errors like:
+Vemos vários erros como:
 
 `Transport failed to connect to 127.0.0.1:2379`
 
-That is the etcd port number. You believe the API server isn't able to read or
-write from etcd. Your focus changes to see whats wrong with the etcd container
-which is also in an exited state.
+Esse é o número da porta etcd. Você acredita que o servidor da API não é capaz de ler ou
+escreva de etcd. Seu foco muda para ver o que há de errado com o contêiner etcd
+que também está em um estado de saída.
 
-Find the etcd container ID by running
+Encontre o ID do contêiner etcd em execução
 
 `docker ps -a`{{execute}}
 
-Then look at the etcd container's logs
+Em seguida, olhe para os logs do contêiner ETCD
 
 `docker logs CONTAINERID_GOES_HERE`
 
-The last log written by etcd looks to be the final clue you needed to solve the
-issue.
+O último log escrito por etcd parece ser a pista final que você precisava para resolver o
+questão.
 
 `/etc/kubernetes/pki/etcd/wrongca.crt: no such file or directory`
 
-It appears as though etcd can't find the CA certificate. In the editor, open the
-etcd.yaml file in the manifests directory. Update the CA certificate path to
+Parece que etcd não consegue encontrar o certificado da autoridade.No editor, abra o
+arquivo etcd.yaml no diretório de manifestos.Atualize o caminho do certificado da CA para
 `/etc/kubernetes/pki/etcd/ca.crt`.
 
-Since the etcd container is a static pod, the Kubelet will start the container
-soon after the configuration is corrected. Once the etcd container has started
-successfully the Kubernetes API should come back up and the following command
-will work again.
+Como o contêiner ETCD é uma vagem estática, o Kubelet iniciará o contêiner
+logo após a configuração ser corrigida.Uma vez iniciado o contêiner ETCD
+com sucesso a API Kubernetes deve voltar e o seguinte comando
+vai funcionar novamente.
 
->Note: This may take a moment. You can re-run the command below as needed until
->the nodes show up.
+> Nota: Isso pode demorar um momento.Você pode executar novamente o comando abaixo conforme necessário até
+> os nós aparecem.
 
 `kubectl get nodes`{{execute}}

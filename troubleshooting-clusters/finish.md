@@ -1,1 +1,1 @@
-Great job finishing the scenario!
+Ótimo trabalho para finalizar o cenário!
