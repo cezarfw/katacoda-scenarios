@@ -1,5 +1,3 @@
-In this scenario you'll learn how to build Docker images based on a Dockerfile
-and run Docker containers based on the image you create. At the end of the
-scenario you will push the image to a remote container image registry.
+Nesse cenário, você aprenderá como criar imagens do Docker com base em um Dockerfile e executar contêineres do Docker com base na imagem que você criar. No final do cenário, você pressionará a imagem para um registro remoto de imagem de contêiner.
 
-The environment is pre-configured with Docker and Kubernetes installed.
+O ambiente é pré-configurado com Docker e Kubernetes instalados.

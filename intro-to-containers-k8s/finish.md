@@ -1,7 +1,7 @@
-In this scenario we built a container image, ran and stopped a container from
-that image, and then pushed the image to a registry.
+Nesse cenário, construímos uma imagem de contêiner, corremos e paramos um contêiner
+essa imagem e, em seguida, empurrou a imagem para um registro.
 
-We then deployed our website using a Kubernetes deployment and service using
-kubectl, the Kubernetes command line tool.
+Em seguida, implantamos nosso site usando uma implantação e serviço do Kubernetes usando
+kubectl, a ferramenta de linha de comando Kubernetes.
 
-Congratulations!
+Parabéns!
