@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webserver
+  namespace: prodapps
+spec:
+  type: NodePort
+  selector:
+    app: webserver1
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 32321

@@ -1,0 +1,67 @@
+{
+  "title": "Hands on Troubleshooting - Clusters",
+  "description": "In this scenario you'll troubleshoot clusters experiencing issues.",
+  "difficulty": "Advanced",
+  "time": "15 - 20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Cluster Info",
+        "text": "clusterinfo.md",
+        "courseData": "launch.sh"
+      },
+      {
+        "title": "Failed Cluster Scenario 1",
+        "text": "step1.md",
+        "courseData": "scenario1.sh",
+        "code": "reset.sh"
+      },
+      {
+        "title": "Failed Cluster Scenario 2",
+        "text": "step2.md",
+        "courseData": "scenario2.sh",
+        "code": "reset.sh"
+      }
+    ],
+    "intro": {
+        "text": "intro.md"
+        },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "kuard-1.yaml",
+          "target": "/root/manifests",
+          "chmod": "640"
+        }
+      ],
+      "host02": [
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data",
+          "chmod": "777"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+      "dashboards": [{
+        "name": "Webserver",
+        "port": 32321
+      }],
+    "uilayout": "editor-terminal",
+    "uieditorpath": "/etc/kubernetes/",
+    "uisettings": "yaml"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running"
+  }
+}

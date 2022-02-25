@@ -1,0 +1,88 @@
+{
+  "title": "Hands on Troubleshooting - Service Routing",
+  "description": "In this scenario you'll troubleshoot several pods that can't be accessed.",
+  "difficulty": "Beginner",
+  "time": "15 - 20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Cluster Info",
+        "text": "clusterinfo.md",
+        "courseData": "launch.sh"
+      },
+      {
+        "title": "Failed Services Scenario 1",
+        "text": "step1.md",
+        "courseData": "scenario1.sh",
+        "code": "reset.sh"
+      },
+      {
+        "title": "Failed Services Scenario 2",
+        "text": "step2.md",
+        "courseData": "scenario2.sh",
+        "code": "reset.sh"
+      },
+      {
+        "title": "Failed Services Scenario 3",
+        "text": "step3.md",
+        "courseData": "scenario3.sh",
+        "code": "reset.sh"
+      }
+    ],
+    "intro": {
+        "text": "intro.md"
+        },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "kuard-1.yaml",
+          "target": "/root/manifests",
+          "chmod": "640"
+        },
+        {
+          "file": "scenario1-answer.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
+        },
+        {
+          "file": "resources.yaml",
+          "target":"/root",
+          "chmod": "640"
+        },
+        {
+          "file": "webserver-1.yaml",
+          "target":"/root",
+          "chmod": "640"
+        }
+      ],
+      "host02": [
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data",
+          "chmod": "777"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+      "dashboards": [{
+        "name": "Webserver",
+        "port": 32321
+      }],
+    "uilayout": "editor-terminal",
+    "uieditorpath": "/root/manifests/",
+    "uisettings": "yaml"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running"
+  }
+}

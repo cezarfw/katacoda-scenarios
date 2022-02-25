@@ -1,0 +1,126 @@
+{
+  "title": "Hands on with kubectl - Intermediate",
+  "description": "Learn how to use kubectl as an itermediate user",
+  "difficulty": "Intermediate",
+  "time": "60 mimutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Kubectl - Context and Configuration",
+        "text": "step1.md"
+      },
+      {
+        "title": "Create a new context",
+        "text": "step2.md",
+        "foreground": "clear.sh"
+      },
+      {
+        "title": "Switch between contexts",
+        "text": "step3.md",
+        "foreground": "clear.sh"
+      },
+      {
+        "title": "Install kubectx to quickly switch between context",
+        "foreground": "clear.sh",
+        "text": "step4.md"
+      },
+      {
+        "title": "Create namespaces",
+        "foreground": "clear.sh",
+        "text": "step5.md"
+      },
+      {
+        "title": "Create resources inside a namespace",
+        "foreground": "clear.sh",
+        "text": "step6.md"
+      },
+      {
+        "title": "Switch between namespaces",
+        "foreground": "clear.sh",
+        "text": "step7.md"
+      },
+      {
+        "title": "Install kubens to switch between namespaces",
+        "background": "default-namespace.sh",
+        "foreground": "clear.sh",
+        "text": "step8.md"
+      },
+      {
+        "title": "Find resource with --selector",
+        "foreground": "deploy.sh",
+        "text": "step9.md"
+      },
+      {
+        "title": "Use jsonpath to find/filter resources",
+        "foreground": "clear.sh",
+        "text": "step10.md"
+      },
+      {
+        "title": "Use Loop/Range in JSONPath with Kubectl",
+        "foreground": "clear.sh",
+        "text": "step11.md"
+      },
+      {
+        "title": "Format output with custom-columns",
+        "foreground": "clear.sh",
+        "text": "step12.md"
+      },
+      {
+        "title": "Scale resources",
+        "foreground": "clear.sh",
+        "text": "step13.md"
+      },
+      {
+        "title": "Update resources - Part I",
+        "foreground": "clear.sh",
+        "text": "step14.md"
+      },
+      {
+        "title": "Update resources - Part II",
+        "foreground": "clear.sh",
+        "text": "step15.md"
+      },
+      {
+        "title": "Patch and label resources",
+        "background": "delete-pods.sh",
+        "foreground": "clear.sh",
+        "text": "step16.md"
+      },
+      {
+        "title": "Delete resources",
+        "foreground": "clear.sh",
+        "text": "step17.md"
+      },
+      {
+        "title": "Additional Resources",
+        "foreground": "clear.sh",
+        "text": "step18.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "kubectx.sh",
+          "target": "~/",
+          "chmod": "+x"
+        },
+        {
+          "file": "label-deploy.yaml",
+          "target": "~/"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running:1.18"
+  }
+}
