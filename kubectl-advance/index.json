@@ -1,0 +1,108 @@
+{
+  "title": "Hands on with kubectl - Advanced",
+  "description": "In this scenario, we will take a look at advanced concepts of Kubernetes through using kubectl.We will look at the tooling and concepts that will help you investigate and troubleshoot through a clusters.",
+  "difficulty": "Advanced",
+  "time": "60 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "kubectl Plugin Setup",
+        "foreground": "clear.sh",
+        "text": "step1.md"
+      },
+      {
+        "title": "kubectl and krew usage",
+        "foreground": "clear.sh",
+        "text": "step2.md"
+      },
+      {
+        "title": "Install plugins via krew",
+        "foreground": "clear.sh",
+        "text": "step3.md"
+      },
+      {
+        "title": "kubectl plugins usage examples",
+        "foreground": "clear.sh",
+        "background": "create-ns-deploy.sh",
+        "text": "step4.md"
+      },
+      {
+        "title": "Interacting with pods - kubectl logs",
+        "background": "delete-deploy.sh",
+        "foreground": "clear.sh",
+        "text": "step5.md"
+      },
+      {
+        "title": "Interacting with pods - kubectl exec/iexec",
+        "foreground": "clear.sh",
+        "text": "step6.md"
+      },
+      {
+        "title": "Interacting with Pods - kubectl cp",
+        "foreground": "clear.sh",
+        "text": "step7.md"
+      },
+      {
+        "title": "Interacting with Nodes - kubectl taint",
+        "background": "default-ns.sh",
+        "foreground": "clear.sh",
+        "text": "step8.md"
+      },
+      {
+        "title": "Interacting with Nodes - Pod's tolerations",
+        "foreground": "clear.sh",
+        "background": "delete-mypod.sh",
+        "text": "step9.md"
+      },
+      {
+        "title": "Interacting with Nodes- kubectl cordon",
+        "foreground": "clear.sh",
+        "text": "step10.md"
+      },
+      {
+        "title": "Interacting with Nodes - kubectl drain",
+        "foreground": "clear.sh",
+        "text": "step11.md"
+      },
+      {
+        "title": "Interacting with Nodes/Pods - kubectl top",
+        "foreground": "clear.sh",
+        "text": "step12.md"
+      },
+      {
+        "title": "Clean up",
+        "foreground": "clear.sh",
+        "text": "step13.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {
+          "file": "install-krew.sh",
+          "target": "~/krew-install",
+          "chmod": "+x"
+        },
+        {
+          "file": "nginx-deployment.yaml",
+          "target": "~/deployment"
+        },
+        {
+          "file": "explore-deploy.yaml",
+          "target": "~/deployment"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "uilayout": "terminal"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running:1.18"
+  }
+}

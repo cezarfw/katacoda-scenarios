@@ -1,0 +1,106 @@
+{
+  "title": "Hands on Troubleshooting - Pods",
+  "description": "In this scenario you'll troubleshoot several pods that won't start successfully.",
+  "difficulty": "Beginner",
+  "time": "15 - 20 minutes",
+  "details": {
+    "steps": [
+      {
+        "title": "Cluster Info",
+        "text": "step1.md"
+      },
+      {
+        "title": "Failed Pod Scenario 1",
+        "code": "reset.sh",
+        "text": "step2.md"
+      },
+      {
+        "title": "Failed Pod Scenario 2",
+        "courseData": "scenario2.sh",
+        "code": "reset.sh",
+        "text": "step3.md"
+      },
+      {
+        "title": "Failed Pod Scenario 3",
+        "courseData": "scenario3.sh",
+        "code": "reset.sh",
+        "text": "step4.md"
+      },
+      {
+        "title": "Failed Pod Scenario 4",
+        "courseData": "scenario4.sh",
+        "code": "reset.sh",
+        "text": "step5.md"
+      }
+    ],
+    "intro": {
+      "text": "intro.md",
+      "courseData": "scenario1.sh"
+    },
+    "finish": {
+      "text": "finish.md"
+    },
+    "assets": {
+      "host02": [
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data",
+          "chmod": "777"
+        }
+      ],
+      "host01": [
+        {
+          "file": "kuard.yaml",
+          "target": "/root/manifests",
+          "chmod": "640"
+        },
+        {
+          "file": "kuard-1-answer.yaml",
+          "target": "/root/manifests"
+        },
+        {
+          "file": "kuard-2-answer.yaml",
+          "target": "/root/manifests"
+        },
+        {
+          "file": "KAlogo.png",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "index.html",
+          "target":"/mnt/data",
+          "chmod": "777"
+        },
+        {
+          "file": "webserver.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
+        },
+        {
+          "file": "webserver-1-answer.yaml",
+          "target":"/root/manifests",
+          "chmod": "640"
+        }
+      ]
+    }
+  },
+  "environment": {
+    "showdashboard": true,
+      "dashboards": [{
+        "name": "Webserver",
+        "port": 32321
+      }],
+    "uilayout": "editor-terminal",
+    "uieditorpath": "/root/manifests/",
+    "uisettings": "yaml"
+  },
+  "backend": {
+    "imageid": "kubernetes-cluster-running"
+  }
+}
